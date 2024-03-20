@@ -22,8 +22,9 @@ int main()
 			}
 			scheduler->HandleEvent(nextEvent);
 			scheduler->evEngine.RemoveEvent(nextEvent);
+			scheduler->ResolveFork();
 		}
-		scheduler->ResolveFork();
+		// scheduler->ResolveFork();
 		scheduler->DistributeRewards();
 		rate += scheduler->ShowStatistics(rd+1, (double)(clock() - end) / CLOCKS_PER_SEC / 60);
 		delete scheduler;
